@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    {% if something %}
+
+    Hi. Your excel file was successfully uploaded. Booklist should be updated soon on the <a href="{% url 'admin_login' %}">Admin Page</a>.
+
+    
+
+    {% else %}
+    <h1>Something went wrong. Please try again. <a href="{% url 'upload_excel' %}">Upload again</a>  </h1>
+    {% endif %}
+
+
+</body>
+</html>

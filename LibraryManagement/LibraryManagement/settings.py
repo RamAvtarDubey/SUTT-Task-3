@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -32,10 +32,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    
     'studentlogin.apps.StudentloginConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,25 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-SOCIALACCOUNT_PROVIDERS = {
-    'google': {
-        'APP': {
-            'client_id': '93506085435-b9mk0l918fmda183jv29lvebb1vnoi70.apps.googleusercontent.com',
-            'secret': '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',
-            'key': ''
-        },
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
-    }
-}
+
 MIDDLEWARE = [
     
-    'allauth.account.middleware.AccountMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,18 +53,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-
-AUTHENTICATION_BACKENDS = (
-    'allauth.account.auth_backends.AuthenticationBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-SITE_ID = 2
-ACCOUNT_EMAIL_VERIFICATION = 'none'
-LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'LibraryManagement.urls'
 
@@ -150,8 +119,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
+STATIC_URL = '/static/'
 
-STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'studentlogin/static'),
+]
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

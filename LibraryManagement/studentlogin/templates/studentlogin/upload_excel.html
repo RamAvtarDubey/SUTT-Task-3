@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UploadDocument</title>
+</head>
+<body>
+    
+    
+    Upload excel file to convert it into database
+    <center>
+    <form method="POST" action="{% url 'done_uploading_excel' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="excel_file" id="excel_file"><br><br><br>
+        <input type="submit" value="submit">
+
+    </form>
+
+</body>
+</html>

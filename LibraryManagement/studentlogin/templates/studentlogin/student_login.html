@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Page</title>
+</head>
+<body>
+    
+    This is the Student's Page. You'll find the list of the books available with us.
+
+    <br>
+    <br>
+    
+      
+    {% load static %}
+    
+    {% if details %}
+    
+    <h1>This is the list of currently available books and their details.</h1>
+
+    <table cellpadding='25px'>
+        {% for i in details %}
+        <tr>
+            <th>
+                <a href="{% static 'studentlogin/generated_pages/detail_' %}{{ forloop.counter0 }}.html">{{ i.name }}</a>
+                
+            </th>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <br><br><br><br>
+
+
+    {% endif %}
+    
+
+</center>   
+</body>
+</html>
